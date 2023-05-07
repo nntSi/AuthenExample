@@ -1,0 +1,54 @@
+version: '3.9'
+
+# Network
+networks:
+  web_network:
+    name: reactdockervite
+    driver: bridge
+
+services:
+  # React App Service
+  reactapp:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: reactapp_vite
+    restart: always
+    volumes:
+      - ./frontend/:/usr/app/frontend
+      - /usr/app/frontend/node_modules
+    ports:
+      - 80:80
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - web_network
+  # mongoDB database
+  mongo:
+    image: mongo:jammy
+    restart: always
+    ports:
+      - 27018:27017
+    volumes:
+      - ./data:/data/db
+    networks:
+      - web_network
+  # node js backend app
+  backendapp:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: always
+    volumes:
+      - ./backend/:/usr/app/backend
+      - /usr/app/backend/node_modules
+    ports:
+      - 3002:3002
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - web_network
+    depends_on:
+      - mongo
+  
