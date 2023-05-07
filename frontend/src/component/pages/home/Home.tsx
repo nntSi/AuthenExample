@@ -15,7 +15,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="labtop:mx-80 lg:mx-60 h-full border-x border-gray-900/5 shadow-sm bg-white/90">
+    <div className="labtop:mx-80 lg:mx-60 min-h-[900px] border-x border-gray-900/5 shadow-sm bg-white/90">
       <div className="px-8 py-3">
         <span className="text-[10px] pt-0.5 pb-1 px-3 rounded-xl shadow-sm text-white bg-dusk-r">
           My Page

@@ -25,7 +25,7 @@ function App() {
   }, [is_login])
   
   return (
-    <div className="App bg-gradient-to-tr bg-gray-100">
+    <div className="App bg-gradient-to-tr bg-gray-100 h-full">
       {is_login && <NavBar/>}
       <Routes>
         <Route path="/" element={ <Login/> } />
