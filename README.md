@@ -15,7 +15,7 @@ docker compose up -d
 
 ## About Project
 
-- this project running in development mode
-- web frontend running in port 80
-- node.js backend running in port 3002
-- mongoDB database runiing in port 27018
+- This project running in development mode
+- React web frontend service in port 80
+- Node.js backend service in port 3002
+- MongoDB database service in port 27018
